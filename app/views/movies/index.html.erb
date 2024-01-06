@@ -12,7 +12,7 @@
         <td class='text-center'><%= movie.title %></td>
         <td class='text-center'><%= movie.genre %></td>
         
-        <% if current_user.admin? %>
+        <% if current_user&.admin? %>
           <td class='text-right'><%= link_to 'Remove', movie_path(movie), data: { turbo_method: :delete } %></td>
         <% end %>
       </tr>

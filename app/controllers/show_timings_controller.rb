@@ -1,0 +1,2 @@
+class ShowTimingsController < ApplicationController
+end

@@ -1,9 +1,12 @@
 class MoviesController < ApplicationController
   before_action :is_admin_user, except: :index
-  before_action :find_movie, only: :destroy
+  before_action :find_movie, only: %i[destroy show]
 
   def index
     @movies = Movie.latest_movies
+  end
+
+  def show
   end
 
   def new
