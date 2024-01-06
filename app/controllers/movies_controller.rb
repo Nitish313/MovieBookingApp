@@ -1,5 +1,6 @@
 class MoviesController < ApplicationController
   before_action :is_admin_user, except: :index
+  before_action :find_movie, only: :destroy
 
   def index
     @movies = Movie.latest_movies
@@ -22,6 +23,17 @@ class MoviesController < ApplicationController
     end
   end
 
+  def destroy
+    if @movie.present?
+      @movie.destroy
+      flash[:notice] = "#{@movie.title} is removed"
+    else
+      flash[:alert] = 'Something went wrong'
+    end
+
+    redirect_to movies_path
+  end
+
   private
   def movie_params
     params.require(:movie).permit(:title, :genre, show_timings: [])
@@ -33,5 +45,9 @@ class MoviesController < ApplicationController
 
   def prepare_show_timing_params(show_timings)
     show_timings.map {|show_time| {show_time:}}
+  end
+
+  def find_movie
+    @movie = Movie.find(params[:id])
   end
 end

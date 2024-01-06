@@ -1,6 +1,6 @@
 class Movie < ApplicationRecord
-  has_many :bookings
-  has_many :show_timings
+  has_many :bookings, dependent: :destroy
+  has_many :show_timings, dependent: :destroy
 
   validates :title, presence: true
   validates :genre, presence: true
