@@ -1,0 +1,21 @@
+<h1>All Movies</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Genre</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @movies.each do |movie| %>
+      <tr>
+        <td class='text-center'><%= movie.title %></td>
+        <td class='text-center'><%= movie.genre %></td>
+        
+        <% if current_user.admin? %>
+          <td class='text-right'><%= link_to 'Remove', movie_path(movie), data: { turbo_method: :delete } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
