@@ -10,12 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_06_173530) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_07_163816) do
   create_table "bookings", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "seat_number"
     t.integer "movie_id", null: false
-    t.datetime "showtime"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "show_timing_id", null: false

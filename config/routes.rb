@@ -6,5 +6,12 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
 
-  resources :movies, only: [:new, :create, :index, :destroy]
+  resources :movies do
+    resources :show_timings, only: [:show] do
+      resources :bookings, only: [:new, :create, :index]
+    end
+  end
+
+  resources :bookings, only: :destroy
+  get 'my_bookings', to: 'bookings#my_bookings'
 end

@@ -1,5 +1,6 @@
 <h1>Authenticated User</h1>
 <ul>
+  <li><%= link_to "Check movies", movies_path %></li>
   <% if current_user.admin? %>
     <li>
       <%= link_to 'Add Movie', new_movie_path %>

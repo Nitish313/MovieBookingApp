@@ -13,7 +13,7 @@
   <body>
     <% flash.each do |key, value| %>
       <div class="alert alert-<%= key %>">
-        <%= value %>
+        <b><%= value %></b>
       </div>
     <% end %>
 

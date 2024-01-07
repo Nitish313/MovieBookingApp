@@ -11,9 +11,17 @@
       <tr>
         <td class='text-center'><%= movie.title %></td>
         <td class='text-center'><%= movie.genre %></td>
-        
-        <% if current_user.admin? %>
-          <td class='text-right'><%= link_to 'Remove', movie_path(movie), data: { turbo_method: :delete } %></td>
+        <td class='text-center'>
+          <%= link_to 'Check shows', movie %>
+        </td>
+
+        <% if current_user&.admin? %>
+          <td class='text-right'>
+            <%= link_to 'Edit', edit_movie_path(movie) %>
+          </td>
+          <td class='text-right'>
+            <%= link_to 'Remove', movie_path(movie), data: { turbo_method: :delete } %>
+          </td>
         <% end %>
       </tr>
     <% end %>
