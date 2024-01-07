@@ -1,0 +1,24 @@
+<h1>My Bookings</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Movie Name</th>
+      <th>Show Time</th>
+      <th>Seat Number</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @my_bookings.each do |booking| %>
+      <tr>
+        <td class='text-center'><%= booking.movie.title %></td>
+        <td class='text-center'><%= booking.show_timing.show_time %></td>
+        <td class='text-center'><%= booking.seat_number %></td>
+        <td>
+          <%= link_to "Cancel Booking", booking_path(booking), data: { turbo_method: :delete } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

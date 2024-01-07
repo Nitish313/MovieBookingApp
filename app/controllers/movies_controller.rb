@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
-  before_action :is_admin_user, except: :index
+  before_action :is_admin_user, except: %i[index show]
   before_action :find_movie, only: %i[destroy show edit update]
 
   def index

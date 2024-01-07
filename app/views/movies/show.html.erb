@@ -3,7 +3,10 @@
   <h2>Shows for <%= @movie.title %></h2>
   <ul>
     <% @movie.show_timings.each do |show| %>
-      <li><%= link_to show.show_time  %></li>
+      <li><%= link_to show.show_time,
+            new_movie_show_timing_booking_path(movie_id: @movie, show_timing_id: show.id)
+          %>
+      </li>
     <% end %>
   </ul>
   <p><%= link_to 'Edit this movie', edit_movie_path(@movie) %></p>

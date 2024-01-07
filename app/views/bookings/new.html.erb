@@ -1,0 +1,16 @@
+<h1>Booking for <%= @movie.title %></h1>
+<%= form_with url: movie_show_timing_bookings_path do |form| %>
+  <div>
+    <%= form.label :seat_number %>
+    <div style="display: flex; flex-wrap: wrap;">
+      <% @available_seats.each do |seat_number| %>
+        <%= form.check_box :seat_number, { multiple: true }, seat_number, nil %>
+        <%= form.label "booking_seat_number#{seat_number}", seat_number %><br>
+      <% end %>
+    </div>
+  </div>
+
+  <div>
+    <%= form.submit 'Book' %>
+  </div>
+<% end %>
