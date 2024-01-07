@@ -20,7 +20,7 @@ class MoviesController < ApplicationController
       @movie.save!
       show_timing_params = prepare_show_timing_params(movie_params[:show_timings])
       @movie.show_timings.upsert_all(show_timing_params)
-      redirect_to authenticated_root_path
+      redirect_to movies_path
     else
       flash.now[:alert] = 'Movie could not be saved'
       render :new
@@ -61,8 +61,8 @@ class MoviesController < ApplicationController
   end
 
   def is_admin_user
-    unless current_user.admin?
-      flash[:alert] = "You don't have admin proviledges"
+    unless current_user&.admin?
+      flash[:alert] = "You don't have admin priviledges"
       redirect_to movies_path
     end
   end

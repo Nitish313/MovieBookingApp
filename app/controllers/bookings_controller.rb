@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :user_signed_in?
+  before_action :is_authenticated
   before_action :find_movie_and_show_timing, except: %i[my_bookings destroy]
   before_action :find_booking, :is_owner, only: :destroy
 
@@ -11,6 +11,7 @@ class BookingsController < ApplicationController
   def create
     updated_params = prepare_params(booking_params[:seat_number])
     Booking.upsert_all(updated_params)
+    redirect_to my_bookings_path
   end
 
   def my_bookings
@@ -29,6 +30,13 @@ class BookingsController < ApplicationController
   end
 
   private
+  def is_authenticated
+    unless user_signed_in?
+      flash[:alert] = 'Please sign in to continue'
+      redirect_to new_user_session_path
+    end
+  end
+
   def booking_params
     params.permit(seat_number: [])
   end
