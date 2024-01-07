@@ -17,8 +17,8 @@ class BookingsController < ApplicationController
   end
 
   def find_movie_and_show_timing
-    return false unless @movie = Movie.find(movie_id: params[:movie_id])
-    return false unless @show_timing = ShowTiming.find!(show_timing_id: params[:show_timing_id])
+    @movie = Movie.find(movie_id: params[:movie_id])
+    @show_timing = ShowTiming.find!(show_timing_id: params[:show_timing_id])
   end
 
   def prepare_params(seat_numbers)

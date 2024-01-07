@@ -1,24 +1,2 @@
 <h1>Add Movie</h1>
-<%= form_with model: @movie do |form| %>
-  <div>
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-  
-  <div>
-    <%= form.label :genre %>
-    <%= form.text_field :genre %>
-  </div>
-
-  <div>
-    <%= form.label :show_timings %>
-    <% %w(8AM 10AM 12PM 2PM 4PM 6PM 8PM 10PM).each do |time| %>
-      <%= form.check_box :show_timings, { multiple: true }, time, nil %>
-      <%= form.label "movie_show_timing_#{time}", time %><br>
-    <% end %>
-  </div>
-
-  <div>
-    <%= form.submit 'Create Movie' %>
-  </div>
-<% end %>
+<%= render "form", model: @movie, button: 'Create Movie' %>

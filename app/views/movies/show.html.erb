@@ -1,0 +1,10 @@
+<h1><%= @movie.title %></h1>
+<% if @movie.show_timings.any? %>
+  <h2>Shows for <%= @movie.title %></h2>
+  <ul>
+    <% @movie.show_timings.each do |show| %>
+      <li><%= link_to show.show_time  %></li>
+    <% end %>
+  </ul>
+  <p><%= link_to 'Edit this movie', edit_movie_path(@movie) %></p>
+<% end %>

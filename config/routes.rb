@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
 
-  resources :movies, only: [:new, :create, :index, :show, :destroy] do
+  resources :movies do
     resources :show_timings, only: [:show] do
       resources :bookings, only: [:new, :create, :index, :destroy]
     end
